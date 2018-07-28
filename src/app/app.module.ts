@@ -8,25 +8,44 @@ import { SecondComponent } from './second/second.component';
 import { FirstComponent } from './first/first.component';
 import {RouterModule, Routes} from "@angular/router";
 import {CustomMaterialModule} from "./core/material.module";
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { HomeLayoutComponent } from './home-layout/home-layout.component';
+import { LoginComponent } from './login/login.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 const appRoutes: Routes = [
-  { path: '', component: FirstComponent, data: { title: 'First Component' } },
-  { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
-  { path: 'second', component: SecondComponent, data: { title: 'Second Component' } }
+  { path: '', redirectTo: 'login', data: { title: 'First Component' }, pathMatch: 'full' },
+  {
+    path: 'login', component: LoginLayoutComponent, data: {title: 'First Component'},
+    children: [
+      {path: '', component: LoginComponent}
+    ]
+  },
+  { path: 'main', component: HomeLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'first', pathMatch: 'full' },
+      { path: 'first', component: FirstComponent },
+      { path: 'second', component: SecondComponent }
+    ]
+  }
 ];
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     SecondComponent,
-    FirstComponent
+    FirstComponent,
+    LoginLayoutComponent,
+    HomeLayoutComponent,
+    LoginComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
-      { useHash: true } // <-- debugging purposes only
+      { useHash: false } // <-- debugging purposes only
     ),
     CustomMaterialModule
   ],
