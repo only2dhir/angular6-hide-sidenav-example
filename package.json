@@ -7,24 +7,35 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:server:prod": "ng run angular6-sidenav-example:server && webpack --config webpack.server.config.js --progress --colors",
+    "build:browser:prod": "ng build --prod",
+    "build:prod": "npm run build:server:prod && npm run build:browser:prod",
+    "server": "node local.js"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.3",
+    "@angular/cdk": "^6.2.0",
     "@angular/common": "^6.0.3",
     "@angular/compiler": "^6.0.3",
     "@angular/core": "^6.0.3",
     "@angular/forms": "^6.0.3",
     "@angular/http": "^6.0.3",
     "@angular/material": "^6.4.0",
-    "@angular/platform-browser": "^6.0.3",
+    "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@ng-toolkit/universal": "^1.1.40",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26",
-    "@angular/cdk": "^6.2.0"
+    "@angular/platform-server": "^6.0.0",
+    "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
+    "webpack-cli": "^2.1.4",
+    "ts-loader": "4.2.0",
+    "@nguniversal/express-engine": "^6.0.0",
+    "cors": "~2.8.4"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^6.0.3",

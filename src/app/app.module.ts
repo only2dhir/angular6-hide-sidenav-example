@@ -1,3 +1,5 @@
+import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -23,7 +25,6 @@ const appRoutes: Routes = [
   },
   { path: 'main', component: HomeLayoutComponent,
     children: [
-      { path: '', redirectTo: 'first', pathMatch: 'full' },
       { path: 'first', component: FirstComponent },
       { path: 'second', component: SecondComponent }
     ]
@@ -38,10 +39,13 @@ const appRoutes: Routes = [
     LoginLayoutComponent,
     HomeLayoutComponent,
     LoginComponent,
-    ToolbarComponent
+    ToolbarComponent,
   ],
-  imports: [
-    BrowserModule,
+  imports:[
+ CommonModule,
+NgtUniversalModule,
+
+
     BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
@@ -50,6 +54,5 @@ const appRoutes: Routes = [
     CustomMaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }
