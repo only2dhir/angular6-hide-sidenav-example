@@ -45,7 +45,7 @@ const appRoutes: Routes = [
  CommonModule,
 NgtUniversalModule,
 
-
+    BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
@@ -54,5 +54,6 @@ NgtUniversalModule,
     CustomMaterialModule
   ],
   providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
