@@ -15,7 +15,10 @@ import { HomeLayoutComponent } from './home-layout/home-layout.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
+import { PageNotFoundComponent }  from './page-not-found/page-not-found.component';
+
 const appRoutes: Routes = [
+  // delete data field because it is reduntant
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login', component: LoginLayoutComponent, data: {title: 'First Component'},
@@ -26,7 +29,9 @@ const appRoutes: Routes = [
   { path: 'main', component: HomeLayoutComponent,
     children: [
       { path: 'first', component: FirstComponent },
-      { path: 'second', component: SecondComponent }
+      { path: 'second', component: SecondComponent },
+      // angular route should have a '**' route for 'page not found' -- found Angular.io tutorial
+      { path: '**', component: PageNotFoundComponent}
     ]
   }
 ];
@@ -40,6 +45,7 @@ const appRoutes: Routes = [
     HomeLayoutComponent,
     LoginComponent,
     ToolbarComponent,
+    PageNotFoundComponent
   ],
   imports:[
  CommonModule,
