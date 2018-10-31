@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'login', data: { title: 'First Component' }, pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login', component: LoginLayoutComponent, data: {title: 'First Component'},
     children: [
