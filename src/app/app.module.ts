@@ -15,21 +15,28 @@ import { HomeLayoutComponent } from './home-layout/home-layout.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
-const appRoutes: Routes = [
-  { path: '', redirectTo: 'login', data: { title: 'First Component' }, pathMatch: 'full' },
-  {
-    path: 'login', component: LoginLayoutComponent, data: {title: 'First Component'},
-    children: [
-      {path: '', component: LoginComponent}
-    ]
-  },
-  { path: 'main', component: HomeLayoutComponent,
-    children: [
-      { path: 'first', component: FirstComponent },
-      { path: 'second', component: SecondComponent }
-    ]
-  }
-];
+import { PageNotFoundComponent }  from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+
+
+// const appRoutes: Routes = [
+//   // delete data field because it is reduntant
+//   { path: '', redirectTo: 'login', pathMatch: 'full' },
+//   {
+//     path: 'login', component: LoginLayoutComponent, data: {title: 'First Component'},
+//     children: [
+//       {path: '', component: LoginComponent}
+//     ]
+//   },
+//   { path: 'main', component: HomeLayoutComponent,
+//     children: [
+//       { path: 'first', component: FirstComponent },
+//       { path: 'second', component: SecondComponent },
+//       // angular route should have a '**' route for 'page not found' -- found Angular.io tutorial
+//       { path: '**', component: PageNotFoundComponent}
+//     ]
+//   }
+// ];
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +47,8 @@ const appRoutes: Routes = [
     HomeLayoutComponent,
     LoginComponent,
     ToolbarComponent,
+    PageNotFoundComponent,
+    AppRoutingModule
   ],
   imports:[
  CommonModule,
@@ -47,10 +56,11 @@ NgtUniversalModule,
 
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { useHash: false } // <-- debugging purposes only
-    ),
+
+    // RouterModule.forRoot(
+    //   appRoutes,
+    //   { useHash: false } // <-- debugging purposes only
+    // ),
     CustomMaterialModule
   ],
   providers: [],
